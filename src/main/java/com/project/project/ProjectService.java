@@ -6,20 +6,22 @@ import java.sql.ResultSet;
 // import java.sql.SQLException;
 import java.sql.Statement;
 // import java.sql.PreparedStatement;
-//All Database related stuff happens here
+
+
+//All Database related operations happen under this class
 public class ProjectService {
 
     public void getAllUsers()
     {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "poop");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "root");
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM users.user");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM user");
             while(rs.next())
             {
-                String username = rs.getString("username");
-                String password = rs.getString("password");
+                String username = rs.getString("iduser");
+                String password = rs.getString("pwduser");
                 System.out.println(username + "\t" + password + "\n");
             }
 
