@@ -32,27 +32,27 @@
     <form action="#" th:action="@{/signup}" method="post" th:object="${User}">
       <h1 class="h3 mb-3 fw-normal" style="color:rgb(24, 187, 209);">Please SignUp</h1>
       <div class="form-floating">
-        <input type="text" th:field="*{username}" th:value="none" class="form-control"  name= "username" id="username" placeholder="Username">
+        <input type="text" field="*{username}" class="form-control"  name= "username" id="username" placeholder="Username">
         <label for="username">Your Username</label>
       </div>
       <div class="form-floating">
-        <input type="password" th:field="*{password}" th:value="none" class="form-control"  name= "password" id="password" placeholder="Password">
+        <input type="password" field="*{password}" class="form-control"  name= "password" id="password" placeholder="Password">
         <label for="password">Password</label>
       </div>
       <div class="form-floating">
-        <input type="text" th:field="*{phone_no}" th:value="none" class="form-control"  name= "phone_no" id="phone_no" placeholder="Phone No:">
+        <input type="text" field="*{phone_no}" class="form-control"  name= "phone_no" id="phone_no" placeholder="Phone No:">
         <label for="phone_no">Phone Number</label>
       </div>
       <div class="form-floating">
-        <input type="text" th:field="*{aadhar_no}" th:value="none" class="form-control"  name= "aadhar" id="aadhar" placeholder="Aadhar">
+        <input type="text" field="*{aadhar_no}" class="form-control"  name= "aadhar" id="aadhar" placeholder="Aadhar">
         <label for="aadhar">Aadhar Number</label>
       </div>
       <div class="form-floating">
-        <input type="text" th:field="*{pan_no}" th:value="none" class="form-control"  name= "pan" id="pan" placeholder="Pan">
+        <input type="text" field="*{pan_no}" class="form-control"  name= "pan" id="pan" placeholder="Pan">
         <label for="pan">PAN Number</label>
       </div>
       <div class="form-floating">
-        <input type="date" th:field="*{DOB}" th:value="none" class="form-control"  name= "dob" id="dob" placeholder="Date Of Birth">
+        <input type="date" field="*{DOB}" class="form-control"  name= "dob" id="dob" placeholder="Date Of Birth">
         <label for="dob">Date Of Birth</label>
       </div>
     <br>
