@@ -1,5 +1,7 @@
 package com.project.project;
 
+import org.springframework.stereotype.Service;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -9,6 +11,7 @@ import java.sql.Statement;
 
 
 //All Database related operations happen under this class
+@Service
 public class ProjectService {
 
     public void getAllUsers()
@@ -29,5 +32,6 @@ public class ProjectService {
             System.out.println(ex);
         }
     }
+
 
 }
