@@ -1,6 +1,7 @@
 package com.project.project;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 // import java.sql.SQLException;
@@ -27,8 +28,13 @@ public class DBService {
                 User user = new User();
                 // String username = rs.getString("iduser");
                 // String password = rs.getString("pwduser");
-                user.setUsername(rs.getString("iduser"));
+                user.setAccount_no(rs.getInt("accuser"));
                 user.setPassword(rs.getString("pwduser"));
+                user.setDOB(rs.getDate("dobuser"));
+                user.setPan_no(rs.getString("panuser"));
+                user.setAadhar_no(rs.getString("aadharuser"));
+                user.setUsername(rs.getString("nameuser"));
+                user.setPhone_no(rs.getString("phoneuser"));
                 // System.out.println(username + "\t" + password + "\n");
                 users.add(user);
             }
@@ -40,17 +46,22 @@ public class DBService {
     }
 
     //Add user to DB
-    public void addUser(String username, String password)
+    public void addUser(String password, Date dob, String pan, String aadhar, String phone, String name)
     {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "root");
             //Execute SQl Query
             PreparedStatement stmt = null;
-            String query = "INSERT INTO bank.user(iduser, pwduser) VALUES (?,?)";
+            // System.out.println(password+dob+pan+aadhar+phone+name);
+            String query = "INSERT INTO bank.user(pwduser, dobuser, panuser, aadharuser, phoneuser, nameuser) VALUES (?,?,?,?,?,?)";
             stmt = conn.prepareStatement(query);
-            stmt.setString(1, username);
-            stmt.setString(2, password);
+            stmt.setString(1, password);
+            stmt.setDate(2, dob);
+            stmt.setString(3, pan);
+            stmt.setString(4, aadhar);
+            stmt.setString(5, phone);
+            stmt.setString(6, name);
             int row = stmt.executeUpdate();
             System.out.println(row);
         } catch (Exception ex) {

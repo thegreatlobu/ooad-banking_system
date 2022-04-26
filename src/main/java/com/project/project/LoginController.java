@@ -28,11 +28,11 @@ public class LoginController {
     ArrayList<User> users = service.getAllUsers();
     for(User u:users)
     {
-      String db_iduser = u.getUsername();
+      int db_accuser = u.getAccount_no();
       String db_pwduser = u.getPassword();
-      System.out.println(db_iduser + db_pwduser);
-      System.out.println("Input " + user.getUsername() + user.getPassword());
-      if (user.getUsername().equals(db_iduser) && user.getPassword().equals(db_pwduser))
+      System.out.println(db_accuser + db_pwduser);
+      System.out.println("Input " + user.getAccount_no() + user.getPassword());
+      if (user.getAccount_no() == db_accuser && user.getPassword().equals(db_pwduser))
       {
         //Redirect to home page
         System.out.println("Login Succesfull!!!!!!!!!!!!!!!");
@@ -58,7 +58,7 @@ public class LoginController {
   public String signup(@ModelAttribute("User") User user)
   {
     //Add user to database
-    service.addUser(user.getUsername(), user.getPassword());
+    service.addUser(user.getPassword(), user.getDOB(), user.getPan_no(), user.getAadhar_no(), user.getPhone_no(), user.getUsername());
     return "signup";
   }
 
