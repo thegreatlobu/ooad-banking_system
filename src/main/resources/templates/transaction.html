@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -89,28 +89,28 @@
 <main>
     <div class="container-md">
 
-        <form method="POST">
+        <form action="#" th:action="@{/}" method="post" th:object="${TransactionClass}">
             <div class="mb-2">
                 <label for="AccountNo" class="form-label white">Enter Account No. to Transfer</label>
-                <input type="email" class="form-control" id="AccountNo" placeholder="Eg:1234XXXXXXXX">
+                <input type="email" class="form-control" id="AccountNo" placeholder="Eg:1234XXXXXXXX" th:field="${accountno}">
             </div>
             <div class="mb-2">
                 <label for="AccountName" class="form-label white">Enter Account Holder's Name</label>
-                <input type="email" class="form-control" id="AccountName" placeholder="Name Here">
+                <input type="email" class="form-control" id="AccountName" placeholder="Name Here" th:field="${username}">
             </div>
             <div class="mb-2">
                 <label for="Money" class="form-label white">Enter Amount in Rs.</label>
-                <input type="email" class="form-control" id="Money" placeholder="Name Here">
+                <input type="email" class="form-control" id="Money" placeholder="Name Here" th:field="${value}">
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class="form-check-label white" for="flexRadioDefault1">
+                <label class="form-check-label white" for="flexRadioDefault1" th:field="${savingsaccount}">
                     Savings Account
                 </label>
             </div>
             <div class="form-check">
                 <input class="form-check-input white" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                <label class="form-check-label white" for="flexRadioDefault2">
+                <label class="form-check-label white" for="flexRadioDefault2" th:field="${currentaccount}">
                     Current Account
                 </label>
             </div>
