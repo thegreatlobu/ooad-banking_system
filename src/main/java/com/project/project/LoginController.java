@@ -36,7 +36,7 @@ public class LoginController {
       {
         //Redirect to home page
         System.out.println("Login Succesfull!!!!!!!!!!!!!!!");
-        return "redirect:/home";
+        return "redirect:/home?accno=" + user.getAccount_no();
       }
 
       //TODO: Generate alert for invalid login

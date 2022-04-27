@@ -45,6 +45,35 @@ public class DBService {
         return users;
     }
 
+    //Get user from DB
+    public User getUser(int account_no)
+    {
+        User user = new User();    
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "root");
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM user WHERE accuser = " + account_no);
+            // System.out.println("SELECT user FROM bank.user WHERE accuser = " + account_no);
+            while(rs.next())
+            {
+               
+                user.setAccount_no(rs.getInt("accuser"));
+                user.setPassword(rs.getString("pwduser"));
+                user.setDOB(rs.getDate("dobuser"));
+                user.setPan_no(rs.getString("panuser"));
+                user.setAadhar_no(rs.getString("aadharuser"));
+                user.setUsername(rs.getString("nameuser"));
+                user.setPhone_no(rs.getString("phoneuser"));
+
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return user;
+      
+    }
+    
     //Add user to DB
     public void addUser(String password, Date dob, String pan, String aadhar, String phone, String name)
     {
