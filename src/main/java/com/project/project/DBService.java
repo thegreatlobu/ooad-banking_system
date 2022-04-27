@@ -14,7 +14,7 @@ public class DBService {
 
     public ArrayList<User> getAllUsers()
     {
-        ArrayList<User> users = new ArrayList<User>();
+        ArrayList<User> users = new ArrayList<>();
         try {
             //Establish DB connection
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -68,5 +68,27 @@ public class DBService {
             System.out.println(ex);
         }
 
+    }
+    public double GetBalance(int accountno,boolean type){
+        double bal = 0.0;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "root");
+            PreparedStatement stmt = null;
+            String typeacc;
+            if(type==true){
+                typeacc = "Savings";
+            }
+            else{
+                typeacc = "Current";
+            }
+            String query = "SELECT *";
+
+            return bal;
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+        }
+        return 0.0;
     }
 }
