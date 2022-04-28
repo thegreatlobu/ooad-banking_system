@@ -21,8 +21,8 @@ public class HomePageController {
     {
         int account_no = Integer.parseInt(accno);
         User user = service.getUser(account_no);
-        System.out.println(user.getAccount_no());
-        System.out.println(user);
+        // System.out.println(user.getAccount_no());
+        // System.out.println(user);
         model.addAttribute("user", user);
         return "homenew";
     }
