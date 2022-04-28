@@ -61,12 +61,12 @@ public class LoginController {
   public String signup(@ModelAttribute("User") User user)
   {
     //Add user to database
-    System.out.println(user);
-    System.out.println(user.getAccount_no());
-    System.out.println(user.getpan_no());
-    System.out.println(user.getPhone_no());
-    System.out.println(user.getDOB());
-    System.out.println(user.getAadhar_no());
+    // System.out.println(user);
+    // System.out.println(user.getAccount_no());
+    // System.out.println(user.getpan_no());
+    // System.out.println(user.getPhone_no());
+    // System.out.println(user.getDOB());
+    // System.out.println(user.getAadhar_no());
     service.addUser(user.getPassword(), user.getDOB(), user.getpan_no(), user.getAadhar_no(), user.getPhone_no(), user.getUsername());
     return "signup";
   }
