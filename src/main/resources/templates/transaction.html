@@ -62,7 +62,7 @@
                         Our Services
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/transaction" th:href="@{/transaction/{acc}(acc=${user.account_no})}">Make a Transaction</a></li>
+                        <li><a class="dropdown-item" href="/transaction" th:href="@{/transaction/{acc}(acc=${transfer.getAccountno_user()})}">Make a Transaction</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/request">Transfer Cash or Cheque</a></li>
                         <li><hr class="dropdown-divider"></li>

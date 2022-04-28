@@ -21,6 +21,6 @@ public class TransactionClass {
 
     public void setAccountno_user(int acc_user){this.accountno_user = acc_user;}
     public int getAccountno_user(){return this.accountno_user;}
-    public boolean getType(){return this.type;}
+    public boolean gettype(){return this.type;}
 
 }
