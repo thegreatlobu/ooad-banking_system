@@ -32,10 +32,10 @@ public class User {
     public void setAadhar_no(String aadhar_no) {
         this.aadhar_no = aadhar_no;
     }
-    public String getPan_no() {
+    public String getpan_no() {
         return pan_no;
     }
-    public void setPan_no(String pan_no) {
+    public void setpan_no(String pan_no) {
         this.pan_no = pan_no;
     }
     public Date getDOB() {

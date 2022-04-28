@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>Sign Up Page</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,12 +24,12 @@
       }
     </style>
 
-    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body class="text-center">
 <main class="form-signin">
     
-    <form action="#" th:action="@{/}" method="post" th:object="${user}">
+    <form th:action="@{/signup}" method="post" th:object="${User}">
       <h1 class="h3 mb-3 fw-normal" style="color:rgb(24, 187, 209);">Please SignUp</h1>
       <div class="form-floating">
         <input type="text" field="*{username}" class="form-control"  name= "username" id="username" placeholder="Username">
@@ -45,15 +44,15 @@
         <label for="phone_no">Phone Number</label>
       </div>
       <div class="form-floating">
-        <input type="text" field="*{aadhar_no}" class="form-control"  name= "aadhar" id="aadhar" placeholder="Aadhar">
+        <input type="text" field="*{aadhar_no}" class="form-control"  name= "aadhar_no" id="aadhar_no" placeholder="Aadhar">
         <label for="aadhar">Aadhar Number</label>
       </div>
       <div class="form-floating">
-        <input type="text" field="*{pan_no}" class="form-control"  name= "pan" id="pan" placeholder="Pan">
+        <input type="text" field="*{pan_no}" class="form-control"  name= "pan_no" id="pan_no" placeholder="Pan">
         <label for="pan">PAN Number</label>
       </div>
       <div class="form-floating">
-        <input type="date" field="*{DOB}" class="form-control"  name= "dob" id="dob" placeholder="Date Of Birth">
+        <input type="date" field="*{DOB}" class="form-control"  name= "DOB" id="DOB" placeholder="Date Of Birth">
         <label for="dob">Date Of Birth</label>
       </div>
     <br>
