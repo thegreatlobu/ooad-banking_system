@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <style>
         nav,a{
             background-color: #3c3f41;
@@ -122,7 +122,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                     </div>
                     <div class="toast-body">
-                        Your Balance is 0
+                        Your Balance is [[${bal}]]
                     </div>
                 </div>
             </div>
@@ -132,7 +132,7 @@
                 if (toastTrigger) {
                     toastTrigger.addEventListener('click', function () {
                         let toast = new bootstrap.Toast(toastLiveExample)
-
+                        
                         toast.show()
                     })
                 }
@@ -143,21 +143,13 @@
 </main>
 <div class="container-fluid bg-light sub_div">
     <footer class="py-1 my-1">
-<<<<<<< HEAD
         <!-- <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-=======
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
->>>>>>> 2efd8b10e4aa99d2c7322a558225b9f039c00381
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted footer-a">Loans</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted footer-a">Fixed Deposits</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted footer-a">Request</a></li>
             <li class="nav-item"><a href="#" th:href="@{/FAQ}" class="nav-link px-2 text-muted footer-a">FAQs</a></li>
             <li class="nav-item"><a href="#" th:href="@{/About}" class="nav-link px-2 text-muted footer-a">About</a></li>
-<<<<<<< HEAD
         </ul> -->
-=======
-        </ul>
->>>>>>> 2efd8b10e4aa99d2c7322a558225b9f039c00381
         <p class="text-center text-muted">© 2022 BoB, Inc</p>
     </footer>
 </div>

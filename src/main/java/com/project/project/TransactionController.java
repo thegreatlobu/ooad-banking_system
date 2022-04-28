@@ -17,11 +17,12 @@ public class TransactionController {
 //
 //    }
     @GetMapping("/transaction/{acc_no}")
-    public String Transaction(@PathVariable int acc_no,Model model){
+    public String Transaction(@PathVariable int acc_no, Model model){
         TransactionClass transfer = new TransactionClass();
-
+        double bal = service.getBalance(acc_no, "Savings");
         model.addAttribute("transfer",transfer);
         model.addAttribute("path_accno",acc_no);
+        model.addAttribute("bal", bal);
         return "transaction";
 
     }
