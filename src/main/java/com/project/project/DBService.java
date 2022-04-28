@@ -98,26 +98,23 @@ public class DBService {
         }
 
     }
-    public double getBalance(int account_no,boolean type){
+    public double getBalance(int account_no,String type){
         double bal = 0.0;
+        String value ="";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "root");
             PreparedStatement stmt = null;
-
-            String typeacc="";
-            if(type){
-                typeacc = "Savings";
-            }
-            else{
-                typeacc = "Current";
-            }
-            String query1 = "SELECT balance FROM bank.account where account_no=? and acc_type=?";
+            String query1 = "SELECT * FROM bank.accounts where accuser=? and acctype=?";
             stmt = conn.prepareStatement(query1);
             stmt.setInt(1,account_no);
-            stmt.setString(2,typeacc);
+            stmt.setString(2,type);
+            //System.out.println(stmt);
             ResultSet rs = stmt.executeQuery();
+            //System.out.println(rs);
+            rs.next();
             bal = rs.getDouble("balance");
+            //System.out.println(bal);
             return bal;
         }
         catch(Exception ex){
@@ -125,27 +122,42 @@ public class DBService {
         }
         return 0.0;
     }
-    public boolean updateBalance(int accountno_1,int accountno_2,double value,boolean type){
+    public boolean updateBalance(int accountno_1,int accountno_2,double value,String type){
         try{
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "root");
         PreparedStatement stmt = null;
         PreparedStatement stmt2 = null;
-            String typeacc="";
-            if(type==true){
-                typeacc = "Savings";
-            }
-            else{
-                typeacc = "Current";
-            }
-            double user_bal = getBalance(accountno_1,type);
+
+            double user_bal = getBalance(accountno_1,"Savings");
             double person_bal = getBalance(accountno_2,type);
-            if(user_bal<value || user_bal<1000){
+            user_bal = user_bal - value;
+            person_bal= person_bal + value;
+            if(user_bal<value || user_bal<1000-value){
                 System.out.println("Low Balance");
                 return false;
             }
+            else if(accountno_1==accountno_2){
+                System.out.println("Same accounts");
+            }
             else{
-
+                String query1 = "UPDATE accounts SET balance=? where accuser=? and acctype=?";
+                stmt = conn.prepareStatement(query1);
+                stmt2 = conn.prepareStatement(query1);
+                stmt.setDouble(1,user_bal);
+                stmt.setInt(2,accountno_1);
+                stmt.setString(3,"Savings");
+                stmt2.setDouble(1,person_bal);
+                stmt2.setInt(2,accountno_2);
+                stmt2.setString(3,type);
+                int rs1 = stmt.executeUpdate();
+                int rs2 = stmt2.executeUpdate();
+                if(rs1 == 1 && rs2 == 1){
+                    System.out.println("Printing...");
+                }
+                System.out.println(getBalance(accountno_1,"Savings"));
+                System.out.println(getBalance(accountno_2,type));
+                return true;
             }
 
         }

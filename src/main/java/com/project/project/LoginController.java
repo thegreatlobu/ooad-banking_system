@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class LoginController {
-  private DBService service = new DBService();
+  private final DBService service = new DBService();
 
   @GetMapping("/")
   public String login(Model model)
@@ -38,7 +38,7 @@ public class LoginController {
       if (user.getAccount_no() == db_accuser && user.getPassword().equals(db_pwduser))
       {
         //Redirect to home page
-        System.out.println("Login Succesfull!!!!!!!!!!!!!!!");
+        System.out.println("Login Successfull!!!!!!!!!!!!!!!");
         return "redirect:/home/" + user.getAccount_no();
       }
 

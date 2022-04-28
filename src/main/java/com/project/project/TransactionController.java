@@ -19,8 +19,9 @@ public class TransactionController {
     @GetMapping("/transaction/{acc_no}")
     public String Transaction(@PathVariable int acc_no,Model model){
         TransactionClass transfer = new TransactionClass();
-        transfer.setAccountno_user(acc_no);
+
         model.addAttribute("transfer",transfer);
+        model.addAttribute("path_accno",acc_no);
         return "transaction";
 
     }
@@ -32,10 +33,14 @@ public class TransactionController {
 //    }
 @PostMapping("/transaction/{acc_no}")
 public String TransferFunds(@PathVariable int acc_no,@ModelAttribute("TransactionClass") TransactionClass transfer){
-    boolean type;
-    if (transfer.gettype()) type = true;
-    else type = false;
-    service.getBalance(1,type);
-    return "redirect:/home/"+ transfer.getAccountno_user();
+    transfer.setAccountno_user(acc_no);
+//    System.out.println(transfer.gettype());
+//    System.out.println(transfer.getAccountno_user());
+//    System.out.println(transfer.getValue());
+//    System.out.println(transfer.getAccountno());
+    double val = service.getBalance(acc_no,"Savings");
+    //System.out.println(val);
+    service.updateBalance(acc_no,transfer.getAccountno(),transfer.getValue(),transfer.gettype());
+    return "redirect:/home/"+ acc_no;
 }
 }
