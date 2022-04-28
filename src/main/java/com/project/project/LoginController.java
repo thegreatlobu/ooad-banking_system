@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class LoginController {
-  private DBService service = new DBService();
+  private DBService service = DBService.getInstance();
+
+  
 
   @GetMapping("/")
   public String login(Model model)
@@ -28,13 +30,14 @@ public class LoginController {
   @PostMapping("/")
 	public String login(@ModelAttribute("User") User user)
   {
+    System.out.println("Hash code of service obj in LoginController" + service.hashCode());
     ArrayList<User> users = service.getAllUsers();
     for(User u:users)
     {
       int db_accuser = u.getAccount_no();
       String db_pwduser = u.getPassword();
-      System.out.println(db_accuser + db_pwduser);
-      System.out.println("Input " + user.getAccount_no() + user.getPassword());
+      // System.out.println(db_accuser + db_pwduser);
+      // System.out.println("Input " + user.getAccount_no() + user.getPassword());
       if (user.getAccount_no() == db_accuser && user.getPassword().equals(db_pwduser))
       {
         //Redirect to home page

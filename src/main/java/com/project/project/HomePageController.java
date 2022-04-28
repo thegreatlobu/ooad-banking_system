@@ -14,16 +14,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class HomePageController {
-    private DBService service = new DBService();
+    private DBService service = DBService.getInstance();
 
     @GetMapping("/home/{accno}")
     public String home(@PathVariable String accno, Model model)
     {
+        System.out.println("Hash code of service obj in HomePageController" + service.hashCode());
         int account_no = Integer.parseInt(accno);
         User user = service.getUser(account_no);
         // System.out.println(user.getAccount_no());
         // System.out.println(user);
+        Account account = service.getAccount(account_no);
         model.addAttribute("user", user);
+        model.addAttribute("account", account);
         return "homenew";
     }
 
@@ -32,6 +35,7 @@ public class HomePageController {
     @PostMapping("/home/{accno}")
     public String home(@PathVariable String accno, @ModelAttribute("User") User user)
     {
+        
         return "redirect:/create_account";
     }
 

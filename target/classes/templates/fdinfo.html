@@ -63,12 +63,9 @@
         .nobullet{
            list-style-type: none;
         }
-        .center{
-          margin:auto;
-        }
     </style>
 </head>
-<body>
+<body class="text-center">
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand navbar-light" href="#">OOAD_project</a>
@@ -95,7 +92,7 @@
                     </ul>
                 </li>
 
-    
+            
 
                 <li class="nav-item">
                     <a class="nav-link active h-90 btn btn-danger" aria-current="page" style="margin-left: 5px;" href="/">LogOut</a>
@@ -105,29 +102,22 @@
         </div>
     </div>
 </nav>
-  <main class="form-signin container">
-    <form th:action="@{/create_account/{acc}(acc = ${account.account_no})}" method="post" th:object="${account}">
-      <h1 class="h3 mb-3 fw-normal" style="color:rgb(24, 187, 209); text-align: center;">Please Enter Account Type</h1>
-      <div class="form-floating">
-        <input type="text" field="*{account_no}" class="form-control" id = "account_no" name="account_no">
-        <label for="account_no">Account Number</label>
-      </div>
-      <div class="form-floating">
-        <input type="text" field="*{username}" class="form-control" id = "username" name="username">
-        <label for="username">Username</label>
-      </div>
-      <div class="form-floating">
-        <input type="text" field="*{acctype}" class="form-control" id = "acctype" name="acctype">
-        <label for="acctype">Account Type</label>
-      </div>
-      <div class="form-floating">
-        <input type="text" field="*{balance}" class="form-control" id = "balance" name="balance">
-        <label for="balance">Balance</label>
-      </div>
-    </br>
-      <button class="w-25 btn btn-lg btn-primary" type="submit">Create Account</button>
-    </form>
-    </main>
+<main class="form-signin">
+  <h1>Fixed Deposit Details</h1>
+    <div>
+      <p class="h-4" style="display: inline;">Amount: ₹</p>
+      <p class="h-4" style="display: inline;" th:text = "${amt}"></p>
+    </div>
+    <div>
+      <p class="h-4" style="display: inline;">Duration(In Months):</p>
+      <p class="h-4" style="display: inline;" th:text = "${duration}"></p>
+    </div>
+    <div>
+      <p class="h-4" style="display: inline;">Maturity: ₹</p>
+      <p class="h-4" style="display: inline;" th:text = "${maturity}"></p>
+    </div>
     <br>
+      <p class="mt-5 mb-3 text-muted" style="color:rgb(24, 187, 209);">&copy;OOAD Mini Project</p>
+</main>
 </body>
 </html>

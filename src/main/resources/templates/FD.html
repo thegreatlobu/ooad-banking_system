@@ -63,12 +63,15 @@
         .nobullet{
            list-style-type: none;
         }
+        table, th, td {
+          border: 1px solid black;
+        }
         .center{
           margin:auto;
         }
     </style>
 </head>
-<body>
+<body class="text-center">
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand navbar-light" href="#">OOAD_project</a>
@@ -95,7 +98,7 @@
                     </ul>
                 </li>
 
-    
+              
 
                 <li class="nav-item">
                     <a class="nav-link active h-90 btn btn-danger" aria-current="page" style="margin-left: 5px;" href="/">LogOut</a>
@@ -105,29 +108,70 @@
         </div>
     </div>
 </nav>
-  <main class="form-signin container">
-    <form th:action="@{/create_account/{acc}(acc = ${account.account_no})}" method="post" th:object="${account}">
-      <h1 class="h3 mb-3 fw-normal" style="color:rgb(24, 187, 209); text-align: center;">Please Enter Account Type</h1>
+<main class="form-signin container">
+    
+    <form th:action="@{/fd/{acc}(acc = ${accno})}" method="post" th:object="${FD}">
+      <h1 class="h3 mb-3 fw-normal" style="color:rgb(24, 187, 209);">Enter Fixed Deposit</h1>
       <div class="form-floating">
-        <input type="text" field="*{account_no}" class="form-control" id = "account_no" name="account_no">
-        <label for="account_no">Account Number</label>
+        <input type="text" class="form-control"  field= "*{amt}" name= "amt" id="amt" placeholder="Amount">
+        <label for="account_no">Amount</label>
       </div>
       <div class="form-floating">
-        <input type="text" field="*{username}" class="form-control" id = "username" name="username">
-        <label for="username">Username</label>
+        <input type="text" class="form-control"  field= "*{duration}" name= "duration" id="duration" placeholder="Duration">
+        <label for="password">Duration(In days)</label>
       </div>
       <div class="form-floating">
-        <input type="text" field="*{acctype}" class="form-control" id = "acctype" name="acctype">
-        <label for="acctype">Account Type</label>
-      </div>
-      <div class="form-floating">
-        <input type="text" field="*{balance}" class="form-control" id = "balance" name="balance">
-        <label for="balance">Balance</label>
+        <input type="text" class="form-control" field= "*{custid}" name= "custid" id="custid" placeholder="Account Number">
+        <label for="password">Account Number</label>
       </div>
     </br>
-      <button class="w-25 btn btn-lg btn-primary" type="submit">Create Account</button>
+      <button class="w-25 btn btn-lg btn-primary" type="submit">Submit Fixed Deposit</button>
     </form>
-    </main>
+    </br>
+      <table class="center">
+          <tr>
+            <th>Tenure</th>
+            <th>Interest Rate(per annum)</th>
+            <th>Senior Citizen Rates(per annum)</th>
+          </tr>
+          <tr>
+            <td>7 - 14 days</td>
+            <td>2.50%</td>
+            <td>3.00%</td>
+          </tr>
+          <tr>
+            <td>15 - 29 days</td>
+            <td>2.50%</td>
+            <td>3.00%</td>
+          </tr>
+          <tr>
+            <td>30 - 45 days</td>
+            <td>3.50%</td>
+            <td>4.00%</td>
+          </tr>
+          <tr>
+            <td>46 - 60 days</td>
+            <td>4.00%</td>
+            <td>4.80%</td>
+          </tr>
+          <tr>
+            <td>61 - 90 days</td>
+            <td>4.20%</td>
+            <td>5.00%</td>
+          </tr>
+          <tr>
+            <td>91 days - 6 months</td>
+            <td>4.50%</td>
+            <td>5.50%</td>
+          </tr>
+          <tr>
+            <td>6 - 9 months</td>
+            <td>4.80%</td>
+            <td>6.00%</td>
+          </tr>
+    </table>
+      <p class="mt-5 mb-3 text-muted" style="color:rgb(24, 187, 209);">&copy;OOAD Mini Project</p>
     <br>
+</main>
 </body>
 </html>

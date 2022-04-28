@@ -63,12 +63,9 @@
         .nobullet{
            list-style-type: none;
         }
-        .center{
-          margin:auto;
-        }
     </style>
 </head>
-<body>
+<body class="text-center">
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand navbar-light" href="#">OOAD_project</a>
@@ -78,7 +75,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/home/{acc}(acc=${accno})}">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/home/{acc}(acc=${custid})}">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -87,15 +84,15 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="/">Transfer Cash or Cheque</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" th:href="@{/loan/{acc}(acc=${accno})}">Apply For A Loan</a></li>
+                        <li><a class="dropdown-item" th:href="@{/loan/{acc}(acc=${custid})}">Apply For A Loan</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" th:href="@{/fd/{acc}(acc=${accno})}">Open a FD</a></li>
+                        <li><a class="dropdown-item" th:href="@{/fd/{acc}(acc=${custid})}">Open a FD</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" th:href="@{/create_account/{acc}(acc=${accno})}">Create Account</a></li>
+                        <li><a class="dropdown-item" th:href="@{/create_account/{acc}(acc=${custid})}">Create Account</a></li>
                     </ul>
                 </li>
 
-    
+           
 
                 <li class="nav-item">
                     <a class="nav-link active h-90 btn btn-danger" aria-current="page" style="margin-left: 5px;" href="/">LogOut</a>
@@ -105,29 +102,36 @@
         </div>
     </div>
 </nav>
-  <main class="form-signin container">
-    <form th:action="@{/create_account/{acc}(acc = ${account.account_no})}" method="post" th:object="${account}">
-      <h1 class="h3 mb-3 fw-normal" style="color:rgb(24, 187, 209); text-align: center;">Please Enter Account Type</h1>
-      <div class="form-floating">
-        <input type="text" field="*{account_no}" class="form-control" id = "account_no" name="account_no">
-        <label for="account_no">Account Number</label>
-      </div>
-      <div class="form-floating">
-        <input type="text" field="*{username}" class="form-control" id = "username" name="username">
-        <label for="username">Username</label>
-      </div>
-      <div class="form-floating">
-        <input type="text" field="*{acctype}" class="form-control" id = "acctype" name="acctype">
-        <label for="acctype">Account Type</label>
-      </div>
-      <div class="form-floating">
-        <input type="text" field="*{balance}" class="form-control" id = "balance" name="balance">
-        <label for="balance">Balance</label>
-      </div>
-    </br>
-      <button class="w-25 btn btn-lg btn-primary" type="submit">Create Account</button>
-    </form>
-    </main>
+<main class="form-signin">
+  <h1>Loan Details</h1>
+  <div>
+    <p class="h-4" style="display: inline;">Account Number:</p>
+    <p class="h-4" style="display: inline;" th:text = "${custid}"></p>
+  </div>
+  <div>
+    <p class="h-4" style="display: inline;">Amount: ₹</p>
+    <p class="h-4" style="display: inline;" th:text = "${amt}"></p>
+  </div>
+  <div>
+    <p class="h-4" style="display: inline;">Duration(In Months):</p>
+    <p class="h-4" style="display: inline;" th:text = "${duration}"></p>
+  </div>
+  <div>
+    <p class="h-4" style="display: inline;">EMI: ₹</p>
+    <p class="h-4" style="display: inline;" th:text = "${emi}"></p>
+  </div>
+  <div>
+    <p class="h-4" style="display: inline;">Interest Rate:</p>
+    <p class="h-4" style="display: inline;" th:text = "${rate}"></p>
+    <p class="h-4" style="display: inline;">%</p>
+  </div>
+  <div>
+    <p class="h-4" style="display: inline;">Loan Type:</p>
+    <p class="h-4" style="display: inline;" th:text = "${type}"></p>
+  </div>
+
+    <p class="mt-5 mb-3 text-muted" style="color:rgb(24, 187, 209);">&copy;OOAD Mini Project</p>
     <br>
+</main>
 </body>
 </html>

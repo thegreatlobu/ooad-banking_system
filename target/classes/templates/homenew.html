@@ -33,7 +33,7 @@
             padding-top:0px;
         }
         body{
-            background-image:url("../pictures/wallpaper2.jpg");
+            background-image:url("../img/wallpaper2.jpg");
             height:100%;}
         .row{
             color:#303433;
@@ -47,7 +47,7 @@
             bottom:0px;
         }
         .jumbotron,h6{
-            background-image: url("../pictures/wallpaper1.jpg");
+            background-image: url("../img/wallpaper1.jpg");
             padding: 5% 0px;
             margin:0 auto;
             text-align: center;
@@ -75,35 +75,28 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/home/{acc}(acc=${user.account_no})}">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Our Services
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/">Check Account Details</a></li>
+                        <li><a class="dropdown-item" th:href="@{/transaction/{acc}(acc=${accno})}">Transfer Money</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/">Transfer Cash or Cheque</a></li>
+                        <li><a class="dropdown-item" th:href="@{/loan/{acc}(acc=${accno})}">Apply For A Loan</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="./login.html">Apply For A Loan</a></li>
+                        <li><a class="dropdown-item" th:href="@{/fd/{acc}(acc=${accno})}">Open a FD</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Open a FD</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" th:href="@{/create_account/{acc}(acc=${user.account_no})}">Create Account</a></li>
+                        <li><a class="dropdown-item" th:href="@{/create_account/{acc}(acc=${accno})}">Create Account</a></li>
                     </ul>
                 </li>
 
-                <div class="dropdown me-auto">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        Your Account
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#">Check Request Status</a></li>
-                        <li><a class="dropdown-item" href="#">About us</a></li>
-                        <li><a class="dropdown-item" href="#">Help Page</a></li>
-                    </ul>
-                </div>
+              
+
+                <li class="nav-item">
+                    <a class="nav-link active h-90 btn btn-danger" aria-current="page" style="margin-left: 5px;" href="/">LogOut</a>
+                </li>
 
             </ul>
         </div>
@@ -114,8 +107,8 @@
 <!--     Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
         <div class="container">
-            <h1 class="display-3" th:inline="text">Hello,  !</h1>
-            <h5 class="balance">Your Current Balance is:</h5><p class = "hide">₹92</p><br>
+            <h1 class="display-3" th:inline="text">Hello, [[${user.username}]] !</h1>
+            <h5 class="balance">Your Current Balance is:</h5><h4>₹ [[${account.balance}]]</h4><br>
             <a class="btn btn-primary btn-md" href="#" role="button">Click Here for Mini Statement »</a>
         </div>
     </div>
@@ -126,13 +119,13 @@
         <div class="row">
             <div class="col-md-4">
                 <h2>Best Loans Ever!!!</h2>
-                <img src="../pictures/img.png" height=100px width="100px"/>
+                <img src="../img/img.png" height=100px width="100px"/>
                 <p font="">Providing loans for your dream home at only 5% p.a!!!!</p>
                 <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
             </div>
             <div class="col-md-4">
                 <h2>Scared about Savings?</h2>
-                <img src="../pictures/download.jpg"/>
+                <img src="../img/download.jpg"/>
                 <p> Invest with us 6.5% p.a growth (T & C apply)</p>
                 <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
             </div>

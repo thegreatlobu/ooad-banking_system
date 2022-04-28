@@ -40,7 +40,7 @@
         }
         .sub_div{
             position:absolute;
-            bottom:0px;
+            bottom:0;
         }
 
     </style>
@@ -55,32 +55,22 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="#" th:href="@{/home/{acc}(acc=${transfer.accountno_user})}">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Our Services
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/">Check Account Details</a></li>
+                        <li><a class="dropdown-item" th:href="@{/transaction/{acc}(acc=${accno})}">Transfer Money</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/">Transfer Cash or Cheque</a></li>
+                        <li><a class="dropdown-item" th:href="@{/loan/{acc}(acc=${accno})}">Apply For A Loan</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="./login.html">Apply For A Loan</a></li>
-                        <li><a class="dropdown-item" href="#">Open a FD</a></li>
+                        <li><a class="dropdown-item" th:href="@{/fd/{acc}(acc=${accno})}">Open a FD</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" th:href="@{/create_account/{acc}(acc=${accno})}">Create Account</a></li>
                     </ul>
                 </li>
-
-                <div class="dropdown me-auto">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        Your Account
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#">Check Request Status</a></li>
-                        <li><a class="dropdown-item" href="#">About us</a></li>
-                        <li><a class="dropdown-item" href="#">Help Page</a></li>
-                    </ul>
-                </div>
 
             </ul>
         </div>
@@ -89,28 +79,28 @@
 <main>
     <div class="container-md">
 
-        <form action="#" th:action="@{/}" method="post" th:object="${TransactionClass}">
+        <form  th:action="@{/transaction/{acc}(acc=${acc_no})}" method="post" th:object="${transfer}">
             <div class="mb-2">
-                <label for="AccountNo" class="form-label white">Enter Account No. to Transfer</label>
-                <input type="email" class="form-control" id="AccountNo" placeholder="Eg:1234XXXXXXXX" th:field="${accountno}">
+                <label for="accountno" class="form-label white">Enter Account No. to Transfer</label>
+                <input type="text" class="form-control" id="accountno" name = "accountno" placeholder="Eg:1234XXXXXXXX" th:field="*{accountno}">
             </div>
-            <div class="mb-2">
+            <div class="mb-2">-
                 <label for="AccountName" class="form-label white">Enter Account Holder's Name</label>
-                <input type="email" class="form-control" id="AccountName" placeholder="Name Here" th:field="${username}">
+                <input type="text" class="form-control" id="AccountName" name="username" placeholder="Name Here" th:field="*{username}">
             </div>
             <div class="mb-2">
                 <label for="Money" class="form-label white">Enter Amount in Rs.</label>
-                <input type="email" class="form-control" id="Money" placeholder="Name Here" th:field="${value}">
+                <input type="number" step="0.01" class="form-control" id="Money" name="value" placeholder="Amount in Rupees" th:field="*{value}">
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class="form-check-label white" for="flexRadioDefault1" th:field="${savingsaccount}">
+                <input class="form-check-input" type="radio"  name ="type" id="Savings" value="Savings" th:field="*{type}">
+                <label class="form-check-label white" for="Savings">
                     Savings Account
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input white" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                <label class="form-check-label white" for="flexRadioDefault2" th:field="${currentaccount}">
+                <input class="form-check-input white" type="radio" name="type" id="Current" value="Current" th:field="*{type}" checked>
+                <label class="form-check-label white" for="Current">
                     Current Account
                 </label>
             </div>
@@ -122,7 +112,7 @@
             </div>
             <br>
             <button type="button" class="btn btn-primary" id="liveToastBtn">Check Your Balance Now</button>
-
+            <button type="submit" class="btn btn-primary" id="submit_req">Approve Transaction</button>
             <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
                 <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="toast-header">
@@ -153,13 +143,13 @@
 </main>
 <div class="container-fluid bg-light sub_div">
     <footer class="py-1 my-1">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted footer-a">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted footer-a">Features</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted footer-a">Pricing</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted footer-a">FAQs</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted footer-a">About</a></li>
-        </ul>
+        <!-- <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted footer-a">Loans</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted footer-a">Fixed Deposits</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted footer-a">Request</a></li>
+            <li class="nav-item"><a href="#" th:href="@{/FAQ}" class="nav-link px-2 text-muted footer-a">FAQs</a></li>
+            <li class="nav-item"><a href="#" th:href="@{/About}" class="nav-link px-2 text-muted footer-a">About</a></li>
+        </ul> -->
         <p class="text-center text-muted">© 2022 BoB, Inc</p>
     </footer>
 </div>
