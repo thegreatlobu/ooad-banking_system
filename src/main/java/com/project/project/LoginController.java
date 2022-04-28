@@ -17,6 +17,9 @@ public class LoginController {
   public String login(Model model)
   {
     User user = new User();
+    // User user1 = service.getUser(1);
+    // System.out.println(user1.getAccount_no());
+    // System.out.println(user1);
     model.addAttribute("user", user);
     return "login";
   }
@@ -36,7 +39,7 @@ public class LoginController {
       {
         //Redirect to home page
         System.out.println("Login Succesfull!!!!!!!!!!!!!!!");
-        return "redirect:/home?accno=" + user.getAccount_no();
+        return "redirect:/home/" + user.getAccount_no();
       }
 
       //TODO: Generate alert for invalid login
@@ -50,7 +53,7 @@ public class LoginController {
   public String signup(Model model)
   {
     User user = new User();
-    model.addAttribute("user", user);
+    model.addAttribute("User", user);
     return "signup";
   }
 
@@ -58,7 +61,13 @@ public class LoginController {
   public String signup(@ModelAttribute("User") User user)
   {
     //Add user to database
-    service.addUser(user.getPassword(), user.getDOB(), user.getPan_no(), user.getAadhar_no(), user.getPhone_no(), user.getUsername());
+    System.out.println(user);
+    System.out.println(user.getAccount_no());
+    System.out.println(user.getpan_no());
+    System.out.println(user.getPhone_no());
+    System.out.println(user.getDOB());
+    System.out.println(user.getAadhar_no());
+    service.addUser(user.getPassword(), user.getDOB(), user.getpan_no(), user.getAadhar_no(), user.getPhone_no(), user.getUsername());
     return "signup";
   }
 
