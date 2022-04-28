@@ -41,7 +41,7 @@ public class LoginController {
       if (user.getAccount_no() == db_accuser && user.getPassword().equals(db_pwduser))
       {
         //Redirect to home page
-        System.out.println("Login Succesfull!!!!!!!!!!!!!!!");
+        System.out.println("Login Successfull!!!!!!!!!!!!!!!");
         return "redirect:/home/" + user.getAccount_no();
       }
 
