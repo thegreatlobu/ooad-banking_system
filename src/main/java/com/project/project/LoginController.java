@@ -36,12 +36,13 @@ public class LoginController {
       {
         //Redirect to home page
         System.out.println("Login Succesfull!!!!!!!!!!!!!!!");
-        return "redirect:/home";
+        return "redirect:/home/"+u.getAccount_no();
       }
-
+      else{
       //TODO: Generate alert for invalid login
 
       
+      }
     }
 		return "login";
   }
@@ -59,7 +60,7 @@ public class LoginController {
   {
     //Add user to database
     service.addUser(user.getPassword(), user.getDOB(), user.getPan_no(), user.getAadhar_no(), user.getPhone_no(), user.getUsername());
-    return "signup";
+    return "login";
   }
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,25 +48,25 @@
 <body class="body">
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand navbar-light" href="#">OOAD_project</a>
+        <a class="navbar-brand navbar-light" href="#">BoBa Bank</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="./homenew">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Our Services
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/">Check Account Details</a></li>
+                        <li><a class="dropdown-item" href="/transaction" th:href="@{/transaction}">Make a Transaction</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/">Transfer Cash or Cheque</a></li>
+                        <li><a class="dropdown-item" href="/request">Transfer Cash or Cheque</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="./login.html">Apply For A Loan</a></li>
+                        <li><a class="dropdown-item" href="/loan">Apply For A Loan</a></li>
                         <li><a class="dropdown-item" href="#">Open a FD</a></li>
                     </ul>
                 </li>
@@ -89,27 +89,27 @@
 <main>
     <div class="container-md">
 
-        <form method="POST">
+        <form action="#" th:action="@{/home}" method="post" th:object="${transfer}">
             <div class="mb-2">
-                <label for="AccountNo" class="form-label white">Enter Account No. to Transfer</label>
-                <input type="email" class="form-control" id="AccountNo" placeholder="Eg:1234XXXXXXXX">
+                <label for="account_no" class="form-label white">Enter Account No. to Transfer</label>
+                <input type="email" class="form-control" id="account_no" name = "account_no"placeholder="Eg:1234XXXXXXXX" field="*{account_no}">
             </div>
             <div class="mb-2">
                 <label for="AccountName" class="form-label white">Enter Account Holder's Name</label>
-                <input type="email" class="form-control" id="AccountName" placeholder="Name Here">
+                <input type="email" class="form-control" id="AccountName" name="username" placeholder="Name Here" field="*{username}">
             </div>
             <div class="mb-2">
                 <label for="Money" class="form-label white">Enter Amount in Rs.</label>
-                <input type="email" class="form-control" id="Money" placeholder="Name Here">
+                <input type="email" class="form-control" id="Money" name="value"placeholder="Name Here" field="*{value}">
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class="form-check-label white" for="flexRadioDefault1">
+                <input class="form-check-input" type="radio"  name ="type" id="flexRadioDefault1" value="true" field="*{type}">
+                <label class="form-check-label white" for="flexRadioDefault1" >
                     Savings Account
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input white" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <input class="form-check-input white" type="radio" name="type" id="flexRadioDefault2" value="false" field="*{type}" checked>
                 <label class="form-check-label white" for="flexRadioDefault2">
                     Current Account
                 </label>
@@ -122,7 +122,7 @@
             </div>
             <br>
             <button type="button" class="btn btn-primary" id="liveToastBtn">Check Your Balance Now</button>
-
+            <button type="submit" class="btn btn-primary" id="submit_req">Approve Transaction</button>
             <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
                 <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="toast-header">
@@ -154,9 +154,9 @@
 <div class="container-fluid bg-light sub_div">
     <footer class="py-1 my-1">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted footer-a">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted footer-a">Features</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted footer-a">Pricing</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted footer-a">Loans</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted footer-a">Fixed Deposits</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted footer-a">Request</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted footer-a">FAQs</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted footer-a">About</a></li>
         </ul>

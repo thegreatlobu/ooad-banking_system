@@ -69,7 +69,7 @@ public class DBService {
         }
 
     }
-    public double getBalance(int accountno,boolean type){
+    public double getBalance(int account_no,boolean type){
         double bal = 0.0;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -83,9 +83,9 @@ public class DBService {
             else{
                 typeacc = "Current";
             }
-            String query1 = "SELECT balance FROM bank.account where accountno=? and acc_type=?";
+            String query1 = "SELECT balance FROM bank.account where account_no=? and acc_type=?";
             stmt = conn.prepareStatement(query1);
-            stmt.setInt(1,accountno);
+            stmt.setInt(1,account_no);
             stmt.setString(2,typeacc);
             ResultSet rs = stmt.executeQuery();
             bal = rs.getDouble("balance");
@@ -114,6 +114,9 @@ public class DBService {
             if(user_bal<value || user_bal<1000){
                 System.out.println("Low Balance");
                 return false;
+            }
+            else{
+
             }
 
         }

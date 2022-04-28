@@ -9,15 +9,30 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class TransactionController {
     private DBService service = new DBService();
-    @GetMapping("/{account_no}/transaction")
-    public String Transaction(@PathVariable int account_no,Model model){
+//    @GetMapping("/transaction/{account_no}")
+//    public String Transaction(@PathVariable int account_no,Model model){
+//        TransactionClass transfer = new TransactionClass();
+//        model.addAttribute("transfer",transfer);
+//        return "transaction";
+//
+//    }
+    @GetMapping("/transaction")
+    public String Transaction(Model model){
         TransactionClass transfer = new TransactionClass();
         model.addAttribute("transfer",transfer);
         return "transaction";
-    }
-    @PostMapping("/{account_no}/transaction")
-    public String TransferFunds(@PathVariable int account_no,Model model){
 
-        return "redirect:/{" + account_no + "}/home";
     }
+//    @PostMapping("/transaction/{accountno}/{}")
+//    public String TransferFunds(@PathVariable int accountno,@ModelAttribute TransactionClass transfer){
+//        boolean type = transfer.getType();
+//        service.getBalance(accountno,type);
+//        return "redirect:/home";
+//    }
+@PostMapping("/transaction")
+public String TransferFunds(@ModelAttribute TransactionClass transfer){
+    boolean type = transfer.getType();
+    service.getBalance(1,type);
+    return "redirect:/home/{"+ transfer.getAccountno_user() +"}";
+}
 }
