@@ -15,7 +15,7 @@ public class DBService {
     private static DBService DBServiceInstance = new DBService() ;
     
     private DBService(){};
-
+ 
     public static DBService getInstance()
     {
         return DBServiceInstance;

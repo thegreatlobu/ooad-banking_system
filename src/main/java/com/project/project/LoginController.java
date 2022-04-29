@@ -46,6 +46,7 @@ public class LoginController {
       }
 
       //TODO: Generate alert for invalid login
+      System.out.println("Invalid Credentials. Please Try Again");
 
       
     }

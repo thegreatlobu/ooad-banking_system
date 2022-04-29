@@ -75,20 +75,20 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/home/{acc}(acc=${custid})}">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/home/{acc}(acc=${custid})}">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Our Services
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" th:href="@{/transaction/{acc}(acc=${custid})}">Transfer Money</a></li>
+                        <li><a class="dropdown-item" th:href="@{/transaction/{acc}(acc=${accno})}">Transfer Money</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" th:href="@{/loan/{acc}(acc=${custid})}">Apply For A Loan</a></li>
+                        <li><a class="dropdown-item" th:href="@{/loan/{acc}(acc=${accno})}">Apply For A Loan</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" th:href="@{/fd/{acc}(acc=${custid})}">Open a FD</a></li>
+                        <li><a class="dropdown-item" th:href="@{/fd/{acc}(acc=${accno})}">Open a FD</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" th:href="@{/create_account/{acc}(acc=${custid})}">Create Account</a></li>
+                        <li><a class="dropdown-item" th:href="@{/create_account/{acc}(acc=${accno})}">Create Account</a></li>
                     </ul>
                 </li>
 
@@ -105,25 +105,25 @@
 <main class="form-signin">
   <h1>Loan Details</h1>
   <div>
-    <p class="h-3" style="display: inline;">Account Number:</p>
-    <p class="h-3" style="display: inline;" th:text = "${custid}"></p>
+    <p class="h-4" style="display: inline;">Account Number:</p>
+    <p class="h-4" style="display: inline;" th:text = "${custid}"></p>
   </div>
   <div>
-    <p class="h-3" style="display: inline;">Amount: ₹</p>
-    <p class="h-3" style="display: inline;" th:text = "${amt}"></p>
+    <p class="h-4" style="display: inline;">Amount: ₹</p>
+    <p class="h-4" style="display: inline;" th:text = "${amt}"></p>
   </div>
   <div>
-    <p class="h-3" style="display: inline;">Duration(In Months):</p>
-    <p class="h-3" style="display: inline;" th:text = "${duration}"></p>
+    <p class="h-4" style="display: inline;">Duration(In Months):</p>
+    <p class="h-4" style="display: inline;" th:text = "${duration}"></p>
   </div>
   <div>
-    <p class="h-3" style="display: inline;">EMI: ₹</p>
-    <p class="h-3" style="display: inline;" th:text = "${emi}"></p>
+    <p class="h-4" style="display: inline;">EMI: ₹</p>
+    <p class="h-4" style="display: inline;" th:text = "${emi}"></p>
   </div>
   <div>
-    <p class="h-3" style="display: inline;">Interest Rate:</p>
-    <p class="h-3" style="display: inline;" th:text = "${rate}"></p>
-    <p class="h-3" style="display: inline;">%</p>
+    <p class="h-4" style="display: inline;">Interest Rate:</p>
+    <p class="h-4" style="display: inline;" th:text = "${rate}"></p>
+    <p class="h-4" style="display: inline;">%</p>
   </div>
   <div>
     <p class="h-4" style="display: inline;">Loan Type:</p>
