@@ -283,11 +283,17 @@ public boolean updateBalance(int accountno_1,int accountno_2,double value,String
     Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "root");
     PreparedStatement stmt = null;
     PreparedStatement stmt2 = null;
-
         double user_bal = getBalance(accountno_1,"Savings");
+        
+        // try{
+        //     person_bal = getBalance(accountno_2,type);
+        // }catch(Exception ex){
+        //     user_bal = user_bal + value;
+        // }
         double person_bal = getBalance(accountno_2,type);
         user_bal = user_bal - value;
         person_bal= person_bal + value;
+
         if(user_bal<value || user_bal<1000-value){
             System.out.println("Low Balance");
             return false;

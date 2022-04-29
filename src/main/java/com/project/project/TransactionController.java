@@ -21,7 +21,7 @@ public class TransactionController {
         TransactionClass transfer = new TransactionClass();
         double bal = service.getBalance(acc_no, "Savings");
         model.addAttribute("transfer",transfer);
-        model.addAttribute("path_accno",acc_no);
+        model.addAttribute("accno",acc_no);
         model.addAttribute("bal", bal);
         return "transaction";
 
